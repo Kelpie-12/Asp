@@ -1,0 +1,24 @@
+﻿@page
+@model IndexModel
+@{
+    ViewData["Title"] = "Home page";
+}
+
+<div class="text-center">   
+    <div class="col-md-6 p-lg-5 mx-auto my-5">
+        <h1 class="display-3 fw-bold" _msttexthash="5820893" _msthash="18">Добро пожаловать в ресторан Красти Краб</h1>
+        <h3 class="fw-normal text-muted mb-3" _msttexthash="9954854" _msthash="19">Мы создаём лучше крабсбургеры</h3>
+        <div class="d-flex gap-3 justify-content-center lead fw-normal">
+            <a class="icon-link" asp-page="/About">
+                <font _mstmutation="1" _msttexthash="1388361" _msthash="20">О нас</font>               
+                <svg class="bi" aria-hidden="true"><use xlink:href="#chevron-right"></use></svg>
+            </a>
+            <a class="icon-link" asp-page="/Adress">
+                <font _mstmutation="1" _msttexthash="1184456" _msthash="21">Адрес</font>
+                <svg class="bi" aria-hidden="true"><use xlink:href="#chevron-right"></use></svg>
+            </a>
+        </div>
+    </div>
+   
+  @*   https://getbootstrap.com/docs/5.3/examples/product/ шаблон*@
+</div>
