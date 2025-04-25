@@ -7,6 +7,10 @@ Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "WebAplication", "WebAplicat
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Restoran", "Restoran\Restoran.csproj", "{3783F9BE-8F5B-4B46-9168-0B940D1F4448}"
 EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "ConsolApplication", "ConsolApplication\ConsolApplication.csproj", "{0D60FA45-86AA-4630-AE62-42CFB629AC2F}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "ConsolApplicationHW", "ConsolApplicationHW\ConsolApplicationHW.csproj", "{9EBFEFDF-A498-4407-BCEB-BA1FF66BAC4D}"
+EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|Any CPU = Debug|Any CPU
@@ -21,6 +25,14 @@ Global
 		{3783F9BE-8F5B-4B46-9168-0B940D1F4448}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{3783F9BE-8F5B-4B46-9168-0B940D1F4448}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{3783F9BE-8F5B-4B46-9168-0B940D1F4448}.Release|Any CPU.Build.0 = Release|Any CPU
+		{0D60FA45-86AA-4630-AE62-42CFB629AC2F}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{0D60FA45-86AA-4630-AE62-42CFB629AC2F}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{0D60FA45-86AA-4630-AE62-42CFB629AC2F}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{0D60FA45-86AA-4630-AE62-42CFB629AC2F}.Release|Any CPU.Build.0 = Release|Any CPU
+		{9EBFEFDF-A498-4407-BCEB-BA1FF66BAC4D}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{9EBFEFDF-A498-4407-BCEB-BA1FF66BAC4D}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{9EBFEFDF-A498-4407-BCEB-BA1FF66BAC4D}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{9EBFEFDF-A498-4407-BCEB-BA1FF66BAC4D}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
