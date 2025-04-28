@@ -1,3 +1,7 @@
+using Restoran.Models;
+using Restoran.Services;
+using Restoran.Services.Implementation;
+
 namespace Restoran
 {
     public class Program
@@ -9,6 +13,8 @@ namespace Restoran
             // Add services to the container.
             builder.Services.AddRazorPages();
 
+            builder.Services.AddSingleton<IRestorauntService, RestaurantSersice>();
+            builder.Services.AddSingleton<IMenuItemServices, MenuItemServices>();
             var app = builder.Build();
 
             // Configure the HTTP request pipeline.

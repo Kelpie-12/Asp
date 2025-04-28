@@ -2,4 +2,18 @@
 @model Restoran.Pages.AdressModel
 @{
 }
-Адреса ресторанов
+<h2>
+	Адреса ресторанов
+</h2>
+<ol>
+	@foreach (var restaurnt in Model.Restaurants)
+	{
+		<li>
+			Название ресторана: @restaurnt.Name;
+			<br />
+			Адресс ресторана: @restaurnt.Address;
+
+		</li>
+	}
+
+</ol>

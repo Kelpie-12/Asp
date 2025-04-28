@@ -14,6 +14,6 @@ public class IndexModel : PageModel
 
     public void OnGet()
     {
-
+        _logger.LogInformation("Ползователь зашел на главную страницу");
     }
 }
