@@ -8,10 +8,10 @@ namespace Restoran.Pages
     public class AdressModel : PageModel
     {
         private readonly ILogger<AdressModel> _logger;
-        private readonly IRestorauntService _restorauntService;
+        private readonly IRestorauntServices _restorauntService;
         public List<Restaurant> Restaurants { get; private set; }
         
-        public AdressModel(ILogger<AdressModel> logger, IRestorauntService restorauntService)
+        public AdressModel(ILogger<AdressModel> logger, IRestorauntServices restorauntService)
         {
             _restorauntService = restorauntService;
             _logger = logger;

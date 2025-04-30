@@ -2,7 +2,7 @@
 
 namespace Restoran.Services
 {
-    public interface IRestorauntService
+    public interface IRestorauntServices
     {
         List<Restaurant> GetRestaurants();
     }

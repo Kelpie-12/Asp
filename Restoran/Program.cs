@@ -1,3 +1,6 @@
+using System.Reflection;
+using Autofac;
+using Autofac.Extensions.DependencyInjection;
 using Restoran.Models;
 using Restoran.Services;
 using Restoran.Services.Implementation;
@@ -13,8 +16,26 @@ namespace Restoran
             // Add services to the container.
             builder.Services.AddRazorPages();
 
-            builder.Services.AddSingleton<IRestorauntService, RestaurantSersice>();
-            builder.Services.AddSingleton<IMenuItemServices, MenuItemServices>();
+            // builder.Services.AddSingleton<IRestorauntService, RestaurantSersice>();
+            // builder.Services.AddSingleton<IMenuItemServices, MenuItemServices>();
+
+            builder.Host.UseServiceProviderFactory(new AutofacServiceProviderFactory());
+            builder.Host.ConfigureContainer<ContainerBuilder>(containerBilder =>
+            {
+               // containerBilder.RegisterType<MenuItemServices>().As<IMenuItemServices>().InstancePerLifetimeScope();
+               // containerBilder.RegisterType<RestaurantSersices>().As<IRestorauntServices>().InstancePerLifetimeScope();
+               // containerBilder.RegisterType<EmployeServices>().As<IEmployeesServices>().InstancePerLifetimeScope();
+                 Assembly assembly = typeof(Program).Assembly;                
+                 containerBilder.RegisterAssemblyTypes(assembly)
+                                    .Where(t => t.Name.EndsWith("Services"))
+                                    .AsImplementedInterfaces()
+                                    .InstancePerLifetimeScope();
+                
+
+
+            }
+            );
+
             var app = builder.Build();
 
             // Configure the HTTP request pipeline.
