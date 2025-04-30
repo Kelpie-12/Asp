@@ -22,16 +22,14 @@ namespace Restoran
             builder.Host.UseServiceProviderFactory(new AutofacServiceProviderFactory());
             builder.Host.ConfigureContainer<ContainerBuilder>(containerBilder =>
             {
-               // containerBilder.RegisterType<MenuItemServices>().As<IMenuItemServices>().InstancePerLifetimeScope();
-               // containerBilder.RegisterType<RestaurantSersices>().As<IRestorauntServices>().InstancePerLifetimeScope();
-               // containerBilder.RegisterType<EmployeServices>().As<IEmployeesServices>().InstancePerLifetimeScope();
-                 Assembly assembly = typeof(Program).Assembly;                
-                 containerBilder.RegisterAssemblyTypes(assembly)
-                                    .Where(t => t.Name.EndsWith("Services"))
-                                    .AsImplementedInterfaces()
-                                    .InstancePerLifetimeScope();
-                
-
+                containerBilder.RegisterType<MenuItemServices>().As<IMenuItemServices>().InstancePerLifetimeScope();
+                containerBilder.RegisterType<RestaurantServices>().As<IRestorauntServices>().InstancePerLifetimeScope();
+                containerBilder.RegisterType<EmployeServices>().As<IEmployeesServices>().InstancePerLifetimeScope();
+                // Assembly assembly = typeof(Program).Assembly;                
+                // containerBilder.RegisterAssemblyTypes(assembly)
+                //                    .Where(t => t.Name.EndsWith("Services"))
+                //                    .AsImplementedInterfaces()
+                //                    .InstancePerLifetimeScope();
 
             }
             );
