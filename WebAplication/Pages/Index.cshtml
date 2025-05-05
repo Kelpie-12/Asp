@@ -1,10 +1,38 @@
 ﻿@page
 @model IndexModel
 @{
-    ViewData["Title"] = "Home page";
+	ViewData["Title"] = "Home page";
 }
 
 <div class="text-center">
-    <h1 class="display-4">Welcome</h1>
-    <p>Learn about <a href="https://learn.microsoft.com/aspnet/core">building Web apps with ASP.NET Core</a>.</p>
+	<h1 class="display-4">Welcome</h1>
+	<h1 class="display-4">
+		Текущее время -> @(
+		String.Format("{0:00}:{1:00}:{2:00}", 
+		DateTime.Now.TimeOfDay.Hours, 
+		DateTime.Now.TimeOfDay.Minutes, 
+		DateTime.Now.TimeOfDay.Seconds))
+
+	</h1>
+	<h1 class="display-4">
+		Полная дата -> @{
+			DateTime date = DateTime.Now;
+			
+		string a=	String.Format("{0:00}.{1:00}.{2:0000}",
+			date.Day,
+			date.Month,
+			date.Year);
+			
+		}
+		@a
+	</h1>
+	<h1 class="display-4">
+		Сегодняшний день это -> @DateTime.Now.DayOfYear день в году </h1>
+	<h1 class="display-4">
+		Случайное число -> @{
+			int rand = new Random().Next();
+
+		}@rand
+	</h1>
+	<p> <p>
 </div>
