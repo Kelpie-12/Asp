@@ -13,6 +13,8 @@ Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "ConsolApplicationHW", "Cons
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "RazorPageF", "RazorPageF\RazorPageF.csproj", "{27146808-5E6A-456D-9461-23EE723402B0}"
 EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "ToDoWeb", "ToDoWeb\ToDoWeb.csproj", "{764A4214-836F-4F41-8355-E5308947D330}"
+EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|Any CPU = Debug|Any CPU
@@ -39,6 +41,10 @@ Global
 		{27146808-5E6A-456D-9461-23EE723402B0}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{27146808-5E6A-456D-9461-23EE723402B0}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{27146808-5E6A-456D-9461-23EE723402B0}.Release|Any CPU.Build.0 = Release|Any CPU
+		{764A4214-836F-4F41-8355-E5308947D330}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{764A4214-836F-4F41-8355-E5308947D330}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{764A4214-836F-4F41-8355-E5308947D330}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{764A4214-836F-4F41-8355-E5308947D330}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE

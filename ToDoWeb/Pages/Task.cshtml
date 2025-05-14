@@ -1,0 +1,22 @@
+﻿@page
+@model ToDoWeb.Pages.TaskModel
+@{
+}
+<h2>
+	Задачи
+</h2>
+<ol>
+	@foreach (var task in Model.Tasks)
+	{
+		<li>
+			<h3>@task.Header;</h3>
+			<br />
+			Описание: @task.Desc;
+			<hr />
+			Дата: @task.Date.ToString();
+		</li>
+		
+		<hr />
+	}
+
+</ol>
