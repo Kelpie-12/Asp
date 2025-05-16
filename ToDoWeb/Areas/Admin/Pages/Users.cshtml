@@ -1,0 +1,11 @@
+﻿@page "{id:int}/{name?}"
+@model ToDoWeb.Area.Admin.Pages.IndexModel
+@{
+}
+
+<h2>Страница пользователя</h2>
+<h3>Индивидуальный номер: @Model.Id </h3>
+@if (Model.Name != null)
+{
+	<h3>Имя @Model.Name</h3>
+}

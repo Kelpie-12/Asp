@@ -18,8 +18,7 @@ namespace ToDoWeb
             {
                 //cont.RegisterType<TaskServices>().As<ITaskServices>().InstancePerLifetimeScope();
                 Assembly assembly = typeof(Program).Assembly;
-                cont.RegisterAssemblyTypes(assembly)
-                                                    .Where(t => t.Name.EndsWith("Services"))
+                cont.RegisterAssemblyTypes(assembly).Where(t => t.Name.EndsWith("Services"))
                                                     .AsImplementedInterfaces()
                                                     .InstancePerLifetimeScope();
             }
