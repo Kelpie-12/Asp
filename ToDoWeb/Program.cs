@@ -1,6 +1,7 @@
 using System.Reflection;
 using Autofac;
 using Autofac.Extensions.DependencyInjection;
+using Microsoft.Extensions.FileSystemGlobbing.Internal.Patterns;
 using ToDoWeb.Services;
 using ToDoWeb.Services.Implementation;
 namespace ToDoWeb
@@ -20,12 +21,12 @@ namespace ToDoWeb
                 Assembly assembly = typeof(Program).Assembly;
                 cont.RegisterAssemblyTypes(assembly).Where(t => t.Name.EndsWith("Services"))
                                                     .AsImplementedInterfaces()
-                                                    .InstancePerLifetimeScope();
+                                                    .SingleInstance();
             }
             );
 
             var app = builder.Build();
-
+           
             // Configure the HTTP request pipeline.
             if (!app.Environment.IsDevelopment())
             {
@@ -33,7 +34,7 @@ namespace ToDoWeb
                 // The default HSTS value is 30 days. You may want to change this for production scenarios, see https://aka.ms/aspnetcore-hsts.
                 app.UseHsts();
             }
-
+            
             app.UseHttpsRedirection();
             app.UseStaticFiles();
 

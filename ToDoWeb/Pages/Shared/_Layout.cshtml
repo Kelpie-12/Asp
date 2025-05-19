@@ -26,13 +26,13 @@
 						</li>
 
 						<li class="nav-item">
-							<a class="nav-link text-dark" asp-area="" asp-page="/Task">
+							<a class="nav-link text-dark" asp-area="" asp-page="/Tasks/Index">
 								<i class="bi bi-archive-fill"></i>
 								Список задач
 							</a>
 						</li>
 						<li class="nav-item">
-							<a class="nav-link text-dark" asp-area="Admin" asp-page="/Users" asp-route-id="@(new Random(100).Next())">
+							<a class="nav-link text-dark" asp-area="Admin" asp-page="/Users" asp-route-id="@(new Random().Next(10,25))">
 								<i class="bi bi-archive-fill"></i>
 								Пользователи
 							</a>

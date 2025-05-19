@@ -1,0 +1,24 @@
+﻿@page
+@model ToDoWeb.Pages.Tasks.NewTaskModel
+@{
+}
+<h2>Новая задача</h2>
+<hr />
+
+
+<form method="post">
+	<div class="mb-3">
+		<label for="header" class="form-label">Заголовок</label>
+		<input type="text" class="form-control" id="header" name="title" placeholder="Ваш заголовок" />
+	</div>
+	<div class="mb-3">
+		<label for="desc" class="form-label" >Описание</label>
+		<textarea class="form-control" id="desc" rows="3" name="description"></textarea>
+	</div>
+	<div class="mb-3">
+		<label for="dt" class="form-label">Описание</label>
+		<input id="dt" type="datetime-local" name="datetime" value="2025-05-20T08:30" />
+	</div>
+
+	<button class="btn btn-primary" type="submit">Создать</button>
+</form>

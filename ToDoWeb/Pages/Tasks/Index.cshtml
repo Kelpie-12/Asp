@@ -1,0 +1,18 @@
+﻿@page
+@model ToDoWeb.Tasks.IndexModel
+@{
+}
+<a class="btn btn-primary" asp-area="" asp-page="/Tasks/NewTask">Добавить</a>
+<hr />
+
+@foreach (var task in Model.TaskService.GetAllUserTasks())
+{
+	<div class="card mb-3">
+		<div class="card-body">
+			<h5 class="card-title">@task.Header</h5>
+			<p class="card-text">@task.Desc</p>
+			<hr />
+			Дата: @task.Date.ToString();
+		</div>
+	</div>
+}
