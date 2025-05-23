@@ -2,9 +2,10 @@
 {
     public class UserTask
     {
-       public string ?Header{ get; set; }
-       public string ?Desc { get; set; }
-       public DateTime ?Date { get; set; }
+        public string? Header { get; set; }
+        public string? Desc { get; set; }
+        public DateTime? Date { get; set; }
+        public long Id { get; set; }
 
     }
 }

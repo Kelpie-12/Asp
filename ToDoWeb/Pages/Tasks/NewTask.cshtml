@@ -1,24 +1,48 @@
-﻿@page
+﻿@page "{id:long?}"
 @model ToDoWeb.Pages.Tasks.NewTaskModel
 @{
+	Model.Id = Convert.ToInt64(RouteData.Values["id"]);
+	string pageTitle = string.Empty;
+	string buttonName = string.Empty;
+	if (Model.Id == 0)
+	{
+		pageTitle = "New task";
+		buttonName = "Create";
+	}
+	else
+	{
+		buttonName = "Edit";
+		pageTitle = "Edit task";
+	}
+	ViewData["Title"] = pageTitle;
 }
-<h2>Новая задача</h2>
+@Model.Id
+<h2>@pageTitle</h2>
 <hr />
-
+@if (Model.ErroyMessage != null)
+{
+	<div class="alert-danger">
+		@Model.ErroyMessage
+	</div>
+}
 
 <form method="post">
 	<div class="mb-3">
 		<label for="header" class="form-label">Заголовок</label>
 		<input type="text" asp-for="Title" class="form-control" id="header" name="title" placeholder="Ваш заголовок" />
+		<span asp-validation-for="Title" class="text-danger"></span>
+
 	</div>
 	<div class="mb-3">
-		<label for="desc" class="form-label" >Описание</label>
+		<label for="desc" class="form-label">Описание</label>
 		<textarea class="form-control" asp-for="Description" id="desc" rows="3" name="description"></textarea>
+		<span asp-validation-for="Description"></span>
 	</div>
 	<div class="mb-3">
 		<label for="dt" class="form-label">Описание</label>
 		<input id="dt" type="datetime-local" asp-for="DateTime" name="datetime" value="2025-05-20T08:30" />
+		<span asp-validation-for="DateTime"></span>
 	</div>
 
-	<button class="btn btn-primary" type="submit">Создать</button>
+	<button class="btn btn-primary" asp-page-handler="@buttonName" type="submit">@buttonName</button>
 </form>
