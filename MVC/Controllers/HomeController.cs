@@ -13,8 +13,9 @@ namespace MVC.Controllers
         }
         [HttpGet]
         [ActionName("Index")]
-        public void Index()
+        public IActionResult Index(string? id)
         {
+            return View();  //Content($"ID: {id}");
             //Console.WriteLine($"_welcomeMessage- {_welcomeMessage.GetMessage()}");
         }
         [HttpGet]
