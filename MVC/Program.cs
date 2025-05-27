@@ -23,6 +23,7 @@ namespace MVC
             var app = builder.Build();
 
             app.MapControllerRoute("default", "{controller=Home}/{action=Index}/{id?}");
+            app.MapControllerRoute("calc", "{controller=Calc}/{action=Index}/{id?}");
             //app.MapGet("/", () => "Hello World!");
 
             app.Run();

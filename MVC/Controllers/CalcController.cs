@@ -1,4 +1,5 @@
 ﻿using Microsoft.AspNetCore.Mvc;
+using Microsoft.AspNetCore.Mvc.RazorPages;
 
 namespace MVC.Controllers
 {
@@ -8,6 +9,10 @@ namespace MVC.Controllers
         {
             int sum = a + b;
             return "" + sum;
+        }
+        public IActionResult Index()
+        {
+            return View("Index"); 
         }
     }
 }
