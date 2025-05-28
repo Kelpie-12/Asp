@@ -1,10 +1,12 @@
-﻿namespace MVC.Services
+﻿using MVC.Model;
+
+namespace MVC.Services
 {
     public interface ICalcServices
     {
-        double Sum(double a, double b);
-        double Minus(double a, double b);
-        double Division(double a, double b);
-        double Multi(double a, double b);
+        double Sum(Calculator c);
+        double Minus(Calculator c);
+        double Division(Calculator c);
+        double Multi(Calculator c);
     }
 }

@@ -1,10 +1,12 @@
 {
-  "version": "3.0",
-  "defaultProvider": "cdnjs",
-  "libraries": [
-    {
-      "library": "bootstrap@5.3.3",
-      "destination": "lib/bootstrap/"
-    }
-  ]
+    "version": "3.0",
+    "defaultProvider": "cdnjs",
+    "libraries": [
+
+        {
+            "provider": "cdnjs",
+            "library": "bootstrap@5.3.3",
+            "destination": "lib/bootstrap/"
+        }
+    ]
 }

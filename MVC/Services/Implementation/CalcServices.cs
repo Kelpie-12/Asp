@@ -1,33 +1,35 @@
-﻿namespace MVC.Services.Implementation
+﻿using MVC.Model;
+
+namespace MVC.Services.Implementation
 {
     public class CalcServices : ICalcServices
     {
-        public double Division(double a, double b)
+        public double Division(Calculator c)
         {
-            if (a==0)
+            if (c.A != 0)
             {
-                throw new Exception("На ноль делить нельзя");
-                //  return -1;
+                return c.Total = c.A / c.B;
             }
             else
             {
-                return a / b;
+                c.ErrorMessage = "На ноль делить нельзя";
             }
+            return 0;
         }
 
-        public double Minus(double a, double b)
+        public double Minus(Calculator c)
         {
-            return a - b;
+            return c.Total = c.A - c.B;
         }
 
-        public double Multi(double a, double b)
+        public double Multi(Calculator c)
         {
-            return a * b;
+            return c.Total = c.A * c.B;
         }
 
-        public double Sum(double a, double b)
+        public double Sum(Calculator c)
         {
-            return a + b;
+            return c.Total = c.A + c.B;
         }
     }
 }
