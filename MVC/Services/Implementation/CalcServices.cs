@@ -6,7 +6,7 @@ namespace MVC.Services.Implementation
     {
         public double Division(Calculator c)
         {
-            if (c.A != 0)
+            if (c.B != 0)
             {
                 return c.Total = c.A / c.B;
             }

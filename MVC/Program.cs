@@ -24,6 +24,7 @@ namespace MVC
 
             app.MapControllerRoute("default", "{controller=Home}/{action=Index}/{id?}");
             app.MapControllerRoute("calc", "{controller=Calc}/{action=Index}/{id?}");
+            app.MapControllerRoute("review", "{controller=Review}/{action=Index}/{id?}");
             //app.MapGet("/", () => "Hello World!");
 
             app.Run();
