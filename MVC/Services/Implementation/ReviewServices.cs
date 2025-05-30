@@ -1,27 +1,34 @@
-﻿using MVC.Model;
+﻿using Microsoft.AspNetCore.Mvc;
+using Microsoft.AspNetCore.Mvc.ViewEngines;
+using MVC.Model;
 
 namespace MVC.Services.Implementation
 {
     public class ReviewServices : IReviewService
     {
+        private readonly IJsonDbServices _jsonDbServices;        
+        public ReviewServices(IJsonDbServices jsonDbServices)
+        {
+            _jsonDbServices = jsonDbServices;
+        }
         public bool AddNewUserReview(UserReview review)
         {
-            throw new NotImplementedException();
+            return _jsonDbServices.AddNewUserReviewToJSON(review);
         }
 
         public bool DeleteUserReview(UserReview review)
         {
-            throw new NotImplementedException();
+            return _jsonDbServices.DeleteUserReviewToJSON(review);
         }
 
         public bool EditUserReview(UserReview review)
         {
-            throw new NotImplementedException();
+            return _jsonDbServices.EditUserReviewToJSON(review);
         }
 
         public List<UserReview> GetAllUserReviews()
         {
-            throw new NotImplementedException();
+            return _jsonDbServices.GetUserReviewToJSON();
         }
     }
 }

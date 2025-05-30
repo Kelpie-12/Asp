@@ -1,0 +1,27 @@
+﻿@model MVC.Model.UserReview
+@addTagHelper *, Microsoft.AspNetCore.Mvc.TagHelpers
+@{
+	Layout = "~/Views/Shared/_Layout.cshtml";
+	ViewBag.Title = "NewReview";
+}
+<form method="post">
+	<div class="mb-3">
+		<label for="header" class="form-label">Ваше имя</label>
+		<input type="text" asp-for="UserName" class="form-control" id="header" name="userName" placeholder="Ваше имя" />
+		<span asp-validation-for="UserName" class="text-danger"></span>
+
+	</div>
+	<div class="mb-3">
+		<label for="desc" class="form-label">Отзыв</label>
+		<textarea class="form-control" asp-for="Desc" id="desc" rows="3" name="desc" placeholder="Отзыв"></textarea>
+		<span asp-validation-for="Desc"></span>
+	</div>
+	<div class="mb-3">
+		<label for="dt" class="form-label">Оценка</label>
+		<input id="dt" type="number" min="1" max="5" asp-for="Mark" name="mark" value="2025-05-20T08:30" />
+		<span asp-validation-for="Mark"></span>
+	</div>
+
+	<button class="btn btn-primary" asp-controller="Review" asp-action="AddNewReview" type="submit">Добавить</button>
+</form>
+

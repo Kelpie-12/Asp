@@ -10,4 +10,8 @@
     <PackageReference Include="Autofac.Extensions.DependencyInjection" Version="10.0.0" />
   </ItemGroup>
 
+  <ItemGroup>
+    <Folder Include="Model\JsonUserReview\" />
+  </ItemGroup>
+
 </Project>

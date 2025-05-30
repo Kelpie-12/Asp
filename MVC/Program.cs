@@ -17,7 +17,7 @@ namespace MVC
                 cont.RegisterAssemblyTypes(assembly)
                                     .Where(t => t.Name.EndsWith("Services"))
                                     .AsImplementedInterfaces()
-                                    .InstancePerLifetimeScope();
+                                    .SingleInstance();
             });
 
             var app = builder.Build();
