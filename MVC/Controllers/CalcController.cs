@@ -6,6 +6,7 @@ using MVC.Services.Implementation;
 
 namespace MVC.Controllers
 {
+    [Route("Calc")]
     public class CalcController : Controller
     {
         //private readonly ICalcServices _calcServices;
@@ -14,11 +15,13 @@ namespace MVC.Controllers
         //    _calcServices = calcServices;
         //}
         [HttpGet]
+        [Route("Index")]
         public IActionResult Index()
         {
             return View(new Calculator());
         }
         [HttpPost]
+        [Route("Index")]
         public IActionResult Index([FromServices] ICalcServices _calcServices, Calculator c, string calculate)
         {
             //ICalcServices _calcServices = HttpContext.RequestServices.GetService<ICalcServices>();

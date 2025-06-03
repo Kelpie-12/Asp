@@ -4,6 +4,7 @@ using static System.Runtime.InteropServices.JavaScript.JSType;
 
 namespace MVC.Controllers
 {
+    [Route("{controller}")]
     public class HomeController : Controller
     {
         private readonly IWelcomeServices _welcomeMessage;
@@ -12,7 +13,8 @@ namespace MVC.Controllers
             _welcomeMessage = welcomeMessage;
         }
         [HttpGet]
-        [ActionName("Index")]
+        //[ActionName("Index")]
+        [Route("/")]
         public IActionResult Index(string? id)
         {
             return View();  //Content($"ID: {id}");

@@ -21,10 +21,10 @@ namespace MVC
             });
 
             var app = builder.Build();
-
-            app.MapControllerRoute("default", "{controller=Home}/{action=Index}/{id?}");
-            app.MapControllerRoute("calc", "{controller=Calc}/{action=Index}/{id?}");
-            app.MapControllerRoute("review", "{controller=Review}/{action=Index}/{id?}");
+            app.MapControllers();
+            //app.MapControllerRoute("default", "{controller=Home}/{action=Index}/{id?}");
+            //app.MapControllerRoute("calc", "{controller=Calc}/{action=Index}/{id?}");
+            //app.MapControllerRoute("review", "{controller=Review}/{action=Index}/{id?}");
             //app.MapGet("/", () => "Hello World!");
 
             app.Run();
