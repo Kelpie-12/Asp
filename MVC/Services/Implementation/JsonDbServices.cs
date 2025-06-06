@@ -1,6 +1,6 @@
 ﻿using System.Text.Json;
 using System.Threading.Tasks;
-using MVC.Model;
+using MVC.Model.Domain;
 using static System.Runtime.InteropServices.JavaScript.JSType;
 
 namespace MVC.Services.Implementation
@@ -75,6 +75,24 @@ namespace MVC.Services.Implementation
             return _review.Values.ToList<UserReview>();
         }
 
+        public List<UserReview> GetUserReviewToJSONById(int id)
+        {
+            _review.Clear();
+            DirectoryInfo directory = new DirectoryInfo(pach);
+            foreach (var item in directory.GetFiles())
+            {
+                if (Path.GetExtension(item.FullName) == ".json")
+                {
+                    var serializedReview = File.ReadAllText(item.FullName);
+                    UserReview tmp = JsonSerializer.Deserialize<UserReview>(serializedReview);
+                    if ((!_review.ContainsKey(tmp.Id)) && tmp.IdProduct == id)
+                    {
+                        _review.Add(tmp.Id, tmp);
+                    }
+                }
+            }
+            return _review.Values.ToList<UserReview>();
+        }
 
         private void Save(UserReview review)
         {

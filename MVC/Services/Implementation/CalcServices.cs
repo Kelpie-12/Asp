@@ -1,4 +1,4 @@
-﻿using MVC.Model;
+﻿using MVC.Model.Domain;
 
 namespace MVC.Services.Implementation
 {

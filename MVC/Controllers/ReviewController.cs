@@ -1,6 +1,6 @@
 ﻿using Microsoft.AspNetCore.Mvc;
 using Microsoft.AspNetCore.Mvc.Rendering;
-using MVC.Model;
+using MVC.Model.Domain;
 using MVC.Services;
 using MVC.Services.Implementation;
 namespace MVC.Controllers

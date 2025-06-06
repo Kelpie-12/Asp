@@ -12,6 +12,7 @@
 
   <ItemGroup>
     <Folder Include="Model\JsonUserReview\" />
+    <Folder Include="wwwroot\" />
   </ItemGroup>
 
 </Project>

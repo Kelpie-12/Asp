@@ -1,8 +1,9 @@
-﻿namespace MVC.Model
+﻿namespace MVC.Model.Domain
 {
     public class UserReview
     {
         public long Id { get; set; }
+        public int IdProduct { get; set; } = -1;
         public string? UserName { get; set; }
 
         public int Mark { get; set; }

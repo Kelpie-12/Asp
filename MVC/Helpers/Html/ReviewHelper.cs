@@ -3,13 +3,14 @@ using System.Web;
 using Microsoft.AspNetCore.Html;
 using Microsoft.AspNetCore.Mvc.Rendering;
 using Microsoft.AspNetCore.Mvc.ViewFeatures;
+using MVC.Model.Domain;
 
 namespace MVC.Helpers.Html
 {
     public static class ReviewHelper
     {     
 
-        public static HtmlString CreateReviewContainer(this IHtmlHelper helper, MVC.Model.UserReview user)
+        public static HtmlString CreateReviewContainer(this IHtmlHelper helper, UserReview user)
         {
             TagBuilder div = new TagBuilder("div");
             div.Attributes.Add("class", "carousel-item active");

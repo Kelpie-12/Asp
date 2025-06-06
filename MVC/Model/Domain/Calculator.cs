@@ -1,4 +1,4 @@
-﻿namespace MVC.Model
+﻿namespace MVC.Model.Domain
 {
     public class Calculator
     {

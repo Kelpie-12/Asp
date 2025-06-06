@@ -1,0 +1,25 @@
+﻿@model MVC.Model.Domain.Product
+@using MVC.Helpers.Html
+
+@section Header {
+	<h1>@Model.Name</h1>
+}
+
+<p>Id: @Model.Id</p>
+
+<p>Отзывы на данный товар</p>
+@if (Model.UserReviews.Count != 0)
+{
+	@foreach (var item in Model.UserReviews)
+	{
+		<hr />
+		@Html.CreateReviewContainer(item)
+		<hr />
+	}
+}
+else
+{
+	<hr />
+	<div>Отзывов еще</div>
+	<hr />
+}

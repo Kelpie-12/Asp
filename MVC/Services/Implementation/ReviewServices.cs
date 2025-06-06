@@ -1,6 +1,6 @@
 ﻿using Microsoft.AspNetCore.Mvc;
 using Microsoft.AspNetCore.Mvc.ViewEngines;
-using MVC.Model;
+using MVC.Model.Domain;
 
 namespace MVC.Services.Implementation
 {
@@ -29,6 +29,11 @@ namespace MVC.Services.Implementation
         public List<UserReview> GetAllUserReviews()
         {
             return _jsonDbServices.GetUserReviewToJSON();
+        }
+
+        public List<UserReview> GetAllUserReviewsByIdProduct(int id)
+        {
+            return _jsonDbServices.GetUserReviewToJSONById(id);
         }
     }
 }

@@ -1,5 +1,7 @@
 ﻿using Microsoft.AspNetCore.Mvc;
+using MVC.Model.Veiw;
 using MVC.Services;
+using MVC.Services.Implementation;
 using static System.Runtime.InteropServices.JavaScript.JSType;
 
 namespace MVC.Controllers
@@ -15,10 +17,14 @@ namespace MVC.Controllers
         [HttpGet]
         //[ActionName("Index")]
         [Route("/")]
-        public IActionResult Index(string? id)
+        public IActionResult Index([FromServices] IProductServices productService)
         {
-            return View();  //Content($"ID: {id}");
-            //Console.WriteLine($"_welcomeMessage- {_welcomeMessage.GetMessage()}");
+            HomePageViewModel model = new HomePageViewModel()
+            {
+                Products = productService.GetProducts()
+            };
+
+            return View(model);
         }
         [HttpGet]
         public void Welcome()
