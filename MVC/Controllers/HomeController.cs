@@ -1,4 +1,6 @@
 ﻿using Microsoft.AspNetCore.Mvc;
+using Microsoft.Data.SqlClient;
+using Microsoft.Extensions.Configuration;
 using MVC.Model.Veiw;
 using MVC.Services;
 using MVC.Services.Implementation;
@@ -10,22 +12,28 @@ namespace MVC.Controllers
     public class HomeController : Controller
     {
         private readonly IWelcomeServices _welcomeMessage;
-        public HomeController(IWelcomeServices welcomeMessage)
+        private readonly ISqlDbServices _sqlDbServices;
+        //private readonly IConfiguration _configuration;
+        public HomeController(IWelcomeServices welcomeMessage, ISqlDbServices sqlDbServices/*, IConfiguration configuration*/)
         {
             _welcomeMessage = welcomeMessage;
+            _sqlDbServices = sqlDbServices;
+            //_configuration = configuration;
         }
         [HttpGet]
         //[ActionName("Index")]
         [Route("/")]
-        public IActionResult Index([FromServices] IProductServices productService)
+        public IActionResult Index(/*[FromServices] IProductServices productService*/)
         {
             HomePageViewModel model = new HomePageViewModel()
             {
-                Products = productService.GetProducts()
+                Products = _sqlDbServices.GetAllProducts(/*_configuration*/)
             };
 
             return View(model);
         }
+   
+
         [HttpGet]
         public void Welcome()
         {

@@ -2,8 +2,8 @@
 {
     public class UserReview
     {
-        public long Id { get; set; }
-        public int IdProduct { get; set; } = -1;
+        public int Id { get; set; }
+        public long IdProduct { get; set; } = -1;
         public string? UserName { get; set; }
 
         public int Mark { get; set; }

@@ -75,7 +75,7 @@ namespace MVC.Services.Implementation
             return _review.Values.ToList<UserReview>();
         }
 
-        public List<UserReview> GetUserReviewToJSONById(int id)
+        public List<UserReview> GetUserReviewToJSONById(long id)
         {
             _review.Clear();
             DirectoryInfo directory = new DirectoryInfo(pach);
