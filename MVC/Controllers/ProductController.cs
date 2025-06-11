@@ -1,4 +1,5 @@
 ﻿using Microsoft.AspNetCore.Mvc;
+using Microsoft.AspNetCore.Mvc.Rendering;
 using MVC.Model.Domain;
 
 using MVC.Services;
@@ -19,6 +20,7 @@ namespace MVC.Controllers
         [Route("{controller}/{action}/{id:int?}")]
         public IActionResult Index(int? id)
         {
+            
             if (id == null)
                 return RedirectToAction("Index", "Home");
 

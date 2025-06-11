@@ -1,6 +1,8 @@
 using System.Reflection;
 using Autofac;
 using Autofac.Extensions.DependencyInjection;
+using MVC.Data.Repositories;
+using MVC.Data.Repositories.Implementations;
 
 namespace MVC
 {
@@ -19,7 +21,15 @@ namespace MVC
                                     .AsImplementedInterfaces()
                                     .SingleInstance();
             });
-
+            builder.Host.ConfigureContainer<ContainerBuilder>(cont =>
+            {
+                Assembly assembly = typeof(Program).Assembly;
+                cont.RegisterAssemblyTypes(assembly)
+                                    .Where(t => t.Name.EndsWith("Repository"))
+                                    .AsImplementedInterfaces()
+                                    .SingleInstance();
+            });
+            //builder.Services.AddSingleton<IproductRepository, ProductRepository>();
             var app = builder.Build();
             app.UseStaticFiles();
             app.MapControllers();

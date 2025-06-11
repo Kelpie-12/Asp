@@ -1,17 +1,20 @@
-﻿using MVC.Model.Domain;
+﻿using MVC.Data.Repositories;
+using MVC.Model.Domain;
 
 namespace MVC.Services.Implementation
 {
     public class ProductServices : IProductServices
     {
         private readonly List<Product> products = new List<Product>() { };
-        private readonly ISqlDbServices _sqlDbServices;
+        private readonly IproductRepository _productRepository;
+        //private readonly ISqlDbServices _sqlDbServices;
         //private readonly IJsonDbServices _jsonDbServices;
 
-        public ProductServices(ISqlDbServices sqlDbServices)
+        public ProductServices(/*ISqlDbServices sqlDbServices,*/ IproductRepository productRepository)
         {
-            _sqlDbServices = sqlDbServices;
-            products = sqlDbServices.GetAllProducts();
+            //_sqlDbServices = sqlDbServices;
+            _productRepository = productRepository;
+            products = _productRepository.GetAll();
         }
 
         public List<Product> GetProducts()
