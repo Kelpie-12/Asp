@@ -1,4 +1,5 @@
 ﻿using MVC.Model.Domain;
+using MVC.Model.Veiw;
 
 namespace MVC.Data.Repositories
 {
@@ -6,5 +7,6 @@ namespace MVC.Data.Repositories
     {
         List<Product> GetAll();
         Product GetById(long id);
+        HomePageViewModel<Product> GetAll(int page);
     }
 }

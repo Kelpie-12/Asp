@@ -2,6 +2,7 @@
 using Microsoft.Data.SqlClient;
 using Microsoft.Extensions.Configuration;
 using MVC.Data.Repositories;
+using MVC.Model.Domain;
 using MVC.Model.Veiw;
 using MVC.Services;
 using MVC.Services.Implementation;
@@ -13,23 +14,23 @@ namespace MVC.Controllers
     public class HomeController : Controller
     {
         private readonly IWelcomeServices _welcomeMessage;
-        private readonly IproductRepository _iproductRepository;
-      
-        public HomeController(IWelcomeServices welcomeMessage, IproductRepository iproductRepository)
+
+        private readonly IProductServices _productServices;
+
+        public HomeController(IWelcomeServices welcomeMessage, IProductServices productServices)
         {
             _welcomeMessage = welcomeMessage;
-            _iproductRepository = iproductRepository;
-           
+
+            _productServices = productServices;
         }
         [HttpGet]
         //[ActionName("Index")]
         [Route("/")]
-        public IActionResult Index()
+        public IActionResult Index(int page=0)
         {
-            HomePageViewModel model = new HomePageViewModel()
-            {
-                Products = _iproductRepository.GetAll()
-            };
+            page = Math.Clamp(page, 0, int.MaxValue);
+            HomePageViewModel<Product> model = _productServices.GetProducts(page);
+            
 
             return View(model);
         }

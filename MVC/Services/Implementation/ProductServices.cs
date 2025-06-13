@@ -1,5 +1,6 @@
 ﻿using MVC.Data.Repositories;
 using MVC.Model.Domain;
+using MVC.Model.Veiw;
 
 namespace MVC.Services.Implementation
 {
@@ -7,12 +8,10 @@ namespace MVC.Services.Implementation
     {
         private readonly List<Product> products = new List<Product>() { };
         private readonly IproductRepository _productRepository;
-        //private readonly ISqlDbServices _sqlDbServices;
-        //private readonly IJsonDbServices _jsonDbServices;
+       
 
-        public ProductServices(/*ISqlDbServices sqlDbServices,*/ IproductRepository productRepository)
-        {
-            //_sqlDbServices = sqlDbServices;
+        public ProductServices( IproductRepository productRepository)
+        {          
             _productRepository = productRepository;
             products = _productRepository.GetAll();
         }
@@ -31,6 +30,11 @@ namespace MVC.Services.Implementation
             }
 
             return null;
+        }
+
+        public HomePageViewModel<Product> GetProducts(int page)
+        {
+            return _productRepository.GetAll(page);
         }
     }
 }

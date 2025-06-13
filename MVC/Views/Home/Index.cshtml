@@ -8,7 +8,7 @@
 
 ﻿@using MVC.Model.Domain
 
-@model MVC.Model.Veiw.HomePageViewModel
+@model MVC.Model.Veiw.HomePageViewModel<Product>
 
 @section Header {
     <h1>Список товаров</h1>
@@ -31,5 +31,41 @@ else
 {
     <div class="alert alert-danger">
         Товаров пока что нет :(
+    </div>
+}
+
+@section Footer {
+    @{
+        int pageNumber = Model.CurrentPage + 1;
+    }
+
+    <div class="container-fluid mt-3">
+        <nav>
+            <ul class="pagination">
+                @if (Model.CurrentPage > 0)
+                {
+                    <li class="page-item">
+                        <a class="page-link" asp-route-page="@(Model.CurrentPage - 1)">Предыдущая</a>
+                    </li>
+                    <li class="page-item">
+                        <a class="page-link" asp-route-page="@(Model.CurrentPage - 1)">@(pageNumber - 1)</a>
+                    </li>
+                }
+
+                <li class="page-item active">
+                    <a class="page-link" href="">@pageNumber</a>
+                </li>
+
+                @if (Model.CurrentPage < Model.MaxPage)
+                {
+                    <li class="page-item">
+                        <a class="page-link" asp-route-page="@(Model.CurrentPage + 1)">@(pageNumber + 1)</a>
+                    </li>
+                    <li class="page-item">
+                        <a class="page-link" asp-route-page="@(Model.CurrentPage + 1)">Следующая</a>
+                    </li>
+                }
+            </ul>
+        </nav>
     </div>
 }

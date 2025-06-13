@@ -9,12 +9,10 @@ namespace MVC.Controllers
     public class ProductController : Controller
     {
         private readonly IProductServices _productService;
-        private readonly IReviewService _reviewService;
 
-        public ProductController(IProductServices productService, IReviewService reviewService)
+        public ProductController(IProductServices productService)
         {
             _productService = productService;
-            _reviewService = reviewService;
         }
 
         [Route("{controller}/{action}/{id:int?}")]
