@@ -1,22 +1,19 @@
-﻿using System.Reflection;
-using System.Web;
-using Microsoft.AspNetCore.Html;
+﻿using Microsoft.AspNetCore.Html;
 using Microsoft.AspNetCore.Mvc.Rendering;
-using Microsoft.AspNetCore.Mvc.ViewFeatures;
-using MVC.Model.Domain;
+using MVC.Data.Models;
 
 namespace MVC.Helpers.Html
 {
     public static class ReviewHelper
     {     
 
-        public static HtmlString CreateReviewContainer(this IHtmlHelper helper, UserReview user)
+        public static HtmlString CreateReviewContainer(this IHtmlHelper helper, Review user)
         {
             TagBuilder div = new TagBuilder("div");
             div.Attributes.Add("class", "carousel-item active");
-            div.InnerHtml.AppendHtml(TagP(user.Desc));
-            div.InnerHtml.AppendHtml(TagDivMark(user.Mark.ToString()));
-            div.InnerHtml.AppendHtml(TagDivUserName(user.UserName));
+            div.InnerHtml.AppendHtml(TagP(user.Text));
+            div.InnerHtml.AppendHtml(TagDivMark(user.Rating.ToString()));
+            div.InnerHtml.AppendHtml(TagDivUserName(user.Author));
             TagBuilder a = new TagBuilder(DivRowTextCenter(DivColMd12(DivCarouselInner(div))));
             using (var writter = new StringWriter())
             {

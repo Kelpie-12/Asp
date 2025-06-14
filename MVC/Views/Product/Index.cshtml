@@ -1,4 +1,4 @@
-﻿@model MVC.Model.Domain.Product
+﻿@model MVC.Data.Models.Product
 @using MVC.Helpers.Html
 
 @section Header {
@@ -8,9 +8,9 @@
 <p>Id: @Model.Id</p>
 <h4>@Model.Description</h4>
 <p>Отзывы на данный товар</p>
-@if (Model.UserReviews.Count != 0)
+@if (Model.Reviews.Count != 0)
 {
-	@foreach (var item in Model.UserReviews)
+	@foreach (var item in Model.Reviews)
 	{
 		<hr />
 		@Html.CreateReviewContainer(item)

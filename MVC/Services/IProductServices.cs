@@ -1,4 +1,4 @@
-﻿using MVC.Model.Domain;
+﻿using MVC.Data.Models;
 using MVC.Model.Veiw;
 
 namespace MVC.Services
@@ -7,6 +7,6 @@ namespace MVC.Services
     {
         List<Product> GetProducts();
         HomePageViewModel<Product> GetProducts(int page);
-        Product? GetProductById(int id);
+        Product? GetProductById(long id);
     }
 }

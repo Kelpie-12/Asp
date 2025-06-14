@@ -1,6 +1,4 @@
-﻿using MVC.Model.Domain;
-
-namespace MVC.Model.Veiw
+﻿namespace MVC.Model.Veiw
 {
     public class HomePageViewModel<T>
     {
