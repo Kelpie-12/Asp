@@ -11,6 +11,16 @@ namespace MVC.Services.Implementation
         {
             _database = database;
         }
+
+        public bool AddNewReview(Review review)
+        {
+            _database.Add(review);
+            if (_database.SaveChanges() > 0)
+                return true;
+            else return false;
+          
+        }
+
         public List<Review> GetReviewsForProduct(Product product)
         {
             return _database.Reviews

@@ -3,10 +3,14 @@
 
 @section Header {
 	<h1>@Model.Name</h1>
+	<h4>@Model.Description</h4>
 }
-
-<p>Id: @Model.Id</p>
-<h4>@Model.Description</h4>
+<br />
+<a class="btn btn-primary" asp-controller="Review" asp-action="Index" asp-route-id="@Model.Id">Добавить новый отзыв</a>
+@* asp-all-route-data='new Dictionary<string,string>{{"id",Model.Id.ToString()},}'*@	
+ 
+<br />
+@* <p>Id: @Model.Id</p> *@
 <p>Отзывы на данный товар</p>
 @if (Model.Reviews.Count != 0)
 {
