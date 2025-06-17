@@ -1,4 +1,7 @@
-﻿using Microsoft.AspNetCore.Mvc;
+﻿using Microsoft.AspNetCore.Authentication.JwtBearer;
+using Microsoft.AspNetCore.Authorization;
+using Microsoft.AspNetCore.HttpLogging;
+using Microsoft.AspNetCore.Mvc;
 using MVC.Data.Models;
 using MVC.Model.DTO;
 using MVC.Services;
@@ -54,6 +57,16 @@ namespace MVC.Controllers
             _reviewServices.CreateReview(user, product, reviewDTO);
 
             return RedirectToAction("Index", "Product", new { id = productId });
+        }
+
+        [HttpGet]
+        [Route("{controller}/{action}/{id:int?}")]        
+        [Authorize(AuthenticationSchemes =JwtBearerDefaults.AuthenticationScheme)]        
+        public IActionResult MyReview()
+        {
+            
+            Console.WriteLine("MyReview");
+            return Ok();
         }
     }
 }

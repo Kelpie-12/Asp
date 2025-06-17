@@ -7,5 +7,6 @@ namespace MVC.Services
     {
         public User? GetUserById(long id);
         public void RegisterUser(UserDTO userDTO);
+        public string Login(UserDTO userDTO);
     }
 }

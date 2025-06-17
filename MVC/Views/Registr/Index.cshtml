@@ -1,0 +1,24 @@
+﻿@model MVC.Model.DTO.UserDTO
+@using MVC.Data.Models
+@using (Html.BeginForm("Index", "Registr",FormMethod.Post))
+{
+	<div class="mb-3">
+		@Html.Label("FirstName", "Ваше имя:", new { @class = "form-label" })
+		<input type="text" class="form-control" asp-for="FirstName" asp-route-email="@Model.Email">
+	</div>
+	<div class="mb-3">
+		@Html.Label("LastName", "Фамилия:", new { @class = "form-label" })
+		<input type="text" class="form-control" asp-for="LastName" asp-route-email="@Model.Email">
+	</div>
+	<div class="mb-3">
+		@Html.Label("Email","Email:",new {@class="form-label"})		
+		<input type="email" class="form-control" asp-for="Email" asp-route-email="@Model.Email">
+	</div>
+	<div class="mb-3">
+		@Html.Label("Password", "Password:", new { @class = "form-label" })
+		<input type="password" class="form-control" asp-for="Password" asp-route-password="@Model.Password">
+	</div>
+
+	<button type="submit" class="btn btn-primary" asp-action="LogIn">Регистрация</button>
+
+}

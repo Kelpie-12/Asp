@@ -15,6 +15,9 @@ namespace MVC
         {
             var builder = WebApplication.CreateBuilder(args);
             builder.Services.AddControllersWithViews();
+
+            builder.Services.AddAuth(builder.Configuration);   
+
             builder.Services.AddScoped<IUserServices, UserService>();
             builder.Services.AddDbContext<ApplicationDbContext>(options =>
             {
@@ -40,7 +43,9 @@ namespace MVC
             var app = builder.Build();
             app.UseStaticFiles();
             app.MapControllers();
-         
+
+            app.UseAuthentication();
+            app.UseAuthorization();
 
             app.Run();
         }
