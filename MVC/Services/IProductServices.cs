@@ -6,7 +6,7 @@ namespace MVC.Services
     public interface IProductServices
     {
         List<Product> GetProducts();
-        HomePageViewModel<Product> GetProducts(int page);
+        List<Product> GetProducts(int page);
         Product? GetProductById(long id);
     }
 }

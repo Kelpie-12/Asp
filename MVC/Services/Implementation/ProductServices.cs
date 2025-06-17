@@ -28,18 +28,18 @@ namespace MVC.Services.Implementation
             return _database.Products.Find(id);
         }
 
-        public HomePageViewModel<Product> GetProducts(int page)
+        public List<Product> GetProducts(int page)
         {
-            double productCount = _database.Products.Count() / PRODUCTS_PER_PAGE;
+           // double productCount = _database.Products.Count() / PRODUCTS_PER_PAGE;
 
-            HomePageViewModel<Product> p = new HomePageViewModel<Product>()
-            {
-                CurrentPage = page,
-                MaxPage = (int)Math.Ceiling(productCount),
-                Products = //_database.Products.ToList()
-                           _database.Products.Skip(PRODUCTS_PER_PAGE*page).Take(PRODUCTS_PER_PAGE).ToList()
-            };
-            return p;
+            //HomePageViewModel<Product> p = new HomePageViewModel<Product>()
+            //{
+            //    CurrentPage = page,
+            //    MaxPage = (int)Math.Ceiling(productCount),
+           // Products = _database.Products.ToList();
+                //_database.Products.Skip(PRODUCTS_PER_PAGE*page).Take(PRODUCTS_PER_PAGE).ToList()
+           // };
+            return _database.Products.ToList();
         }
     }
 }

@@ -1,13 +1,14 @@
 ﻿using Microsoft.AspNetCore.Html;
 using Microsoft.AspNetCore.Mvc.Rendering;
 using MVC.Data.Models;
+using MVC.Model.DTO;
 
 namespace MVC.Helpers.Html
 {
     public static class ReviewHelper
     {     
 
-        public static HtmlString CreateReviewContainer(this IHtmlHelper helper, Review user)
+        public static HtmlString CreateReviewContainer(this IHtmlHelper helper, ReviewDTO user)
         {
             TagBuilder div = new TagBuilder("div");
             div.Attributes.Add("class", "carousel-item active");

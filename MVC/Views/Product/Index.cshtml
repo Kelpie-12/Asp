@@ -1,20 +1,27 @@
-﻿@model MVC.Data.Models.Product
+﻿@model MVC.Model.Veiw.HomePageViewModel
 @using MVC.Helpers.Html
+@using MVC.Model.DTO
 
 @section Header {
-	<h1>@Model.Name</h1>
-	<h4>@Model.Description</h4>
+	<h1>@Model.Product.Name</h1>
 }
 <br />
-<a class="btn btn-primary" asp-controller="Review" asp-action="Index" asp-route-id="@Model.Id">Добавить новый отзыв</a>
-@* asp-all-route-data='new Dictionary<string,string>{{"id",Model.Id.ToString()},}'*@	
- 
+<p>Общие сведения о товаре:</p>
+<p>
+	<b>Идентификатор товара</b>: @Model.Product.Id<br />
+	<b>Описание товара</b>: @Model.Product.Description<br />
+	<h3>Цена: @Model.Product.Price ₽</h3>
+</p>
+
+
+@* <a class="btn btn-primary" asp-controller="Review" asp-action="Index" asp-route-id="@Model.Id">Добавить новый отзыв</a>
+ *@
 <br />
 @* <p>Id: @Model.Id</p> *@
-<p>Отзывы на данный товар</p>
 @if (Model.Reviews.Count != 0)
 {
-	@foreach (var item in Model.Reviews)
+	<p>Отзывы на данный товар</p>
+	@foreach (ReviewDTO item in Model.Reviews)
 	{
 		<hr />
 		@Html.CreateReviewContainer(item)
@@ -26,4 +33,37 @@ else
 	<hr />
 	<div>Отзывов еще</div>
 	<hr />
+}
+
+@{
+    ReviewDTO? reviewModel = Model.ReviewModel;
+}
+
+@if (reviewModel != null)
+{
+
+    @using (Html.BeginForm("CreateReview", "Review", FormMethod.Post))
+    {
+        @Html.Hidden("productId", Model.Product.Id)
+       
+
+        <div class="mb-3">
+            @Html.Label("Text", "Отзыв:", new { @class = "form-label" })
+            @Html.TextArea("Text", "", 3, 20, new { @class = "form-control" })
+        </div>
+
+        <div class="mb-3">
+            @Html.Label("Rating", "Рейтинг:", new { @class = "form-label" })
+
+            @for (int i = 0; i < 5; i++)
+            {
+                @Html.RadioButton("Rating", i + 1)
+                @Html.Label("Rating", $"{i + 1}", new { @class = "form-label ms-1 me-3" })
+            }
+        </div>
+
+        <div class="mb-3">
+            <button type="submit" class="btn btn-primary">Оставить отзыв</button>
+        </div>
+    }
 }

@@ -10,10 +10,12 @@ namespace MVC.Controllers
     {       
 
         private readonly IProductServices _productServices;
+        private readonly IReviewServices _reviewServices;
 
-        public HomeController( IProductServices productServices)
+        public HomeController( IProductServices productServices,IReviewServices reviewServices)
         {
             _productServices = productServices;
+            _reviewServices = reviewServices;
         }
         [HttpGet]
         //[ActionName("Index")]
@@ -21,7 +23,7 @@ namespace MVC.Controllers
         public IActionResult Index(int page=0)
         {
             page = Math.Clamp(page, 0, int.MaxValue);
-            HomePageViewModel<Product> model = _productServices.GetProducts(page);
+            List<Product> model = _productServices.GetProducts();           
             return View(model);
         }        
     }

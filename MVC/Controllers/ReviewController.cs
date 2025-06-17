@@ -1,5 +1,6 @@
 ﻿using Microsoft.AspNetCore.Mvc;
 using MVC.Data.Models;
+using MVC.Model.DTO;
 using MVC.Services;
 
 namespace MVC.Controllers
@@ -8,37 +9,51 @@ namespace MVC.Controllers
     {
         private readonly IReviewServices _reviewServices;
         private readonly IProductServices _productService;
-        public Review Review { get; set; }
-        public ReviewController(IReviewServices reviewServices, IProductServices productService)
+        private readonly IUserServices _userService;
+        
+        public ReviewController(IReviewServices reviewServices, IProductServices productService, IUserServices userService)
         {
             _reviewServices = reviewServices;
             _productService = productService;
+            _userService = userService;
         }
-        [HttpGet]
-        [Route("{controller}/{action}/{id:int?}")]
-        public IActionResult Index(int id)
-        {
-            Console.WriteLine("ReviewController");
-            Product product = _productService.GetProductById(id);
-            Review = new Review()
-            {
-                Author = " ",
-                Product = product,
-                ProductId = id,
-                Text = " ",
-                Id = 1,
-                Rating = 1,
-                CreateAt = DateTime.Now
-            };
+        //[HttpGet]
+        //[Route("{controller}/{action}/{id:int?}")]
+        //public IActionResult Index(int id)
+        //{
+        //    Console.WriteLine("ReviewController");
+        //    Product product = _productService.GetProductById(id);
+        //    //Review = new Review()
+        //    //{
+        //    //    //Author = " ",
+        //    //    Product = product,
+        //    //    ProductId = id,
+        //    //    Text = " ",
+        //    //    Id = 1,
+        //    //    Rating = 1,
+        //    //    CreatedAt = DateTime.Now
+        //    //};
 
-            return View(Review);
-        }
+        //    return View();
+        //}
         [HttpPost]
         [Route("{controller}/{action}/{id:int?}")]
-        public IActionResult AddNewReview(Review review)
+        public IActionResult CreateReview(long productId, ReviewDTO reviewDTO)
         {
-            _reviewServices.AddNewReview(review);
-            return View("Index");
+            Console.WriteLine("CREATE REVIEW");
+            Product? product = _productService.GetProductById(productId);
+
+            if (product == null)
+                return BadRequest("Product with specified product id not found");
+
+            User? user = _userService.GetUserById(0);
+
+            if (user == null)
+                return Unauthorized("User not found");
+
+            _reviewServices.CreateReview(user, product, reviewDTO);
+
+            return RedirectToAction("Index", "Product", new { id = productId });
         }
     }
 }

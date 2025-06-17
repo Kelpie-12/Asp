@@ -2,6 +2,7 @@
 using MVC.Services;
 using MVC.Data.Models;
 using MVC.Model.Veiw;
+using MVC.Model.DTO;
 
 namespace MVC.Controllers
 {
@@ -9,6 +10,7 @@ namespace MVC.Controllers
     {
         private readonly IProductServices _productService;
         private readonly IReviewServices _reviewServices;
+
 
         public ProductController(IProductServices productService, IReviewServices reviewServices)
         {
@@ -27,10 +29,22 @@ namespace MVC.Controllers
 
             if (product == null)
                 return RedirectToAction("Index", "Home");
+            List<ReviewDTO> reviews = new List<ReviewDTO>();
 
-            product.Reviews = _reviewServices.GetReviewsForProduct(product);
+            foreach (Review item in _reviewServices.GetReviewsForProduct(product))
+            {
+                reviews.Add(ReviewDTO.FromEntity(item));
+            }
+            HomePageViewModel model = new HomePageViewModel()
+            {
+                Product = product,
+                Reviews = reviews
 
-            return View(product);
+            };
+
+            //product.Reviews = _reviewServices.GetReviewsForProduct(product);
+
+            return View(model);
         }
     }
 }

@@ -1,5 +1,7 @@
-﻿using MVC.Data;
+﻿using Microsoft.EntityFrameworkCore;
+using MVC.Data;
 using MVC.Data.Models;
+using MVC.Model.DTO;
 
 namespace MVC.Services.Implementation
 {
@@ -12,19 +14,31 @@ namespace MVC.Services.Implementation
             _database = database;
         }
 
-        public bool AddNewReview(Review review)
+        public void CreateReview(User user, Product product, ReviewDTO reviewDTO)
         {
-            _database.Add(review);
-            if (_database.SaveChanges() > 0)
-                return true;
-            else return false;
-          
+            if (reviewDTO.Text == null)
+                throw new ArgumentNullException("Review text is not specified");
+
+            if (reviewDTO.Rating == null)
+                throw new ArgumentNullException("Review rating is not specified");
+
+            Review review = new Review()
+            {
+                Product = product,
+                User = user,
+                Text = reviewDTO.Text,
+                Rating = (int)reviewDTO.Rating
+            };
+
+            _database.Reviews.Add(review);
+            _database.SaveChanges();
         }
 
         public List<Review> GetReviewsForProduct(Product product)
         {
             return _database.Reviews
                 .Where(review => review.ProductId == product.Id)
+                .Include(review=>review.User)
                 .ToList();
         }
     }
