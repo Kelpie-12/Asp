@@ -43,7 +43,7 @@ namespace MVC
             var app = builder.Build();
             app.UseStaticFiles();
             app.MapControllers();
-
+            app.UseSession();
             app.UseAuthentication();
             app.UseAuthorization();
 
