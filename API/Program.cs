@@ -1,7 +1,9 @@
 
 using System.Reflection;
+using API.Data;
 using Autofac;
 using Autofac.Extensions.DependencyInjection;
+using Microsoft.EntityFrameworkCore;
 
 namespace API
 {
@@ -19,6 +21,11 @@ namespace API
             builder.Services.AddSwaggerGen();
             builder.Host.UseServiceProviderFactory(new AutofacServiceProviderFactory());
 
+            builder.Services.AddDbContext<ApplicationDbContext>(options =>
+            {
+                options.UseSqlServer(builder.Configuration.GetConnectionString("Test"));
+            });
+
             builder.Host.ConfigureContainer<ContainerBuilder>(cont =>
             {
                 Assembly assembly = typeof(Program).Assembly;
@@ -27,14 +34,7 @@ namespace API
                                     .AsImplementedInterfaces()
                                     .SingleInstance();
             });
-            builder.Host.ConfigureContainer<ContainerBuilder>(cont =>
-            {
-                Assembly assembly = typeof(Program).Assembly;
-                cont.RegisterAssemblyTypes(assembly)
-                                    .Where(t => t.Name.EndsWith("Repository"))
-                                    .AsImplementedInterfaces()
-                                    .SingleInstance();
-            });
+       
 
 
 
@@ -48,7 +48,7 @@ namespace API
             }
 
             app.UseHttpsRedirection();
-
+         
             app.UseAuthorization();
 
 
