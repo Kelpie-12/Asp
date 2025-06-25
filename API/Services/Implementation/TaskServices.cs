@@ -1,5 +1,7 @@
 ﻿using API.Data;
 using API.Data.Model;
+using API.Migrations;
+using Microsoft.EntityFrameworkCore;
 
 namespace API.Services.Implementation
 {
@@ -16,13 +18,18 @@ namespace API.Services.Implementation
             _database.SaveChanges();
         }
 
+        public void DeleteTask(long id)
+        {
+            _database.Tasks.Where(task => task.Id == id).ExecuteDelete();
+        }
+
         public List<UserTask> GetAll()
         {
             return _database.Tasks.ToList();
         }
 
         public UserTask GetUserTaskByName(string title)
-        {         
+        {
             return (UserTask)_database.Tasks.Local.Where(t => t.Title == title);
         }
     }

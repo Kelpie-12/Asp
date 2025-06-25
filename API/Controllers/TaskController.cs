@@ -19,12 +19,19 @@ namespace API.Controllers
         {
             return _taskService.GetAll();
         }
-        [HttpPost]
+        [HttpPut]
         [Route("CreateTask")]
         public void CreateNewTask(string title, string desc)
         {
             _taskService.AddTask(new UserTask() { Title = title, Desc = desc });
         }
+        [HttpDelete]
+        [Route("DeleteTask")]
+        public void DeleteTask(long id)
+        {
+            _taskService.DeleteTask(id);
+        }
+
         //[HttpGet]
         //[Route("GetTaskByName")]
         //public UserTask GetTaskByName(string title)
