@@ -31,12 +31,6 @@ namespace API.Controllers
         {
             _taskService.DeleteTask(id);
         }
-
-        //[HttpGet]
-        //[Route("GetTaskByName")]
-        //public UserTask GetTaskByName(string title)
-        //{
-        //    return _taskService.GetUserTaskByName(title);
-        //}
+     
     }
 }

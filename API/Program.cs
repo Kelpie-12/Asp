@@ -1,6 +1,7 @@
 
 using System.Reflection;
 using API.Data;
+using API.Middleware;
 using Autofac;
 using Autofac.Extensions.DependencyInjection;
 using Microsoft.EntityFrameworkCore;
@@ -34,11 +35,12 @@ namespace API
                                     .AsImplementedInterfaces()
                                     .SingleInstance();
             });
-       
+
 
 
 
             var app = builder.Build();
+            app.UseMiddleware<RequestTimeMiddleware>();
 
             // Configure the HTTP request pipeline.
             if (app.Environment.IsDevelopment())
@@ -48,7 +50,7 @@ namespace API
             }
 
             app.UseHttpsRedirection();
-         
+
             app.UseAuthorization();
 
 
